@@ -13,10 +13,19 @@ from no import No
 class Produto:
     def __init_(self, nome, quantidade, categoria, prioridade, status, data_inclusao):
         self.Nome = nome
-        self.quantidade = quantidade
-        self.categoria = categoria
         self.prioridade = prioridade
+        self.categoria = categoria
+        self.quantidade = quantidade
         self.status = status
         self.data_inclusao = data_inclusao
 
- 
+
+    def produto (self):
+        self.nome =  nome{ 
+            "quantidade": self.quantidade, 
+            "categoria": self.categoria, 
+            "prioridade": self.prioridade, 
+            "status": self.status,
+             "data_inclusao": self.data_inclusao }
+
+    
