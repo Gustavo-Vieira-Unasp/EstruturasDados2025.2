@@ -7,25 +7,38 @@
 # Prioridade (alta, média, baixa)
 # Status (pendente, comprado)
 # Data de inclusão
-from no import No
+from No.no import No
+
+
 
 
 class Produto:
-    def __init_(self, nome, quantidade, categoria, prioridade, status, data_inclusao):
-        self.Nome = nome
-        self.prioridade = prioridade
-        self.categoria = categoria
+    def __init__(self, nome, quantidade, categoria, prioridade, status, data_inclusao):
+        self.nome = nome
         self.quantidade = quantidade
+        self.categoria = categoria
+        self.prioridade = prioridade  
         self.status = status
         self.data_inclusao = data_inclusao
+        
+        self.historico = Historico()
+        
+
+class Registro:
+    def __init__(self, mensagem):
+        self.mensagem = mensagem
+        self.proximo = None
 
 
-    def produto (self):
-        self.nome =  nome{ 
-            "quantidade": self.quantidade, 
-            "categoria": self.categoria, 
-            "prioridade": self.prioridade, 
-            "status": self.status,
-             "data_inclusao": self.data_inclusao }
+class Historico:
+    def __init__(self):
+        self.historico = None
+
+    def adicionar(self, msg):
+        novo = Registro(msg)
+        novo.proximo = self.historico
+        self.historico = novo
+
+
 
     
