@@ -11,23 +11,50 @@
 
 
 class Produto:
+    # Mapeamento de prioridade para valores numéricos para facilitar a ordenação
     prioridade_valor = {
         "alta": 1,
         "media": 2,
         "baixa": 3
     }
 
+    # --------------------------------------------------------
+    # Inicialização do Produto  
+    # --------------------------------------------------------
+
     def __init__(self, nome, quantidade, categoria, prioridade, status, data_inclusao):
         self.nome = nome
         self.quantidade = quantidade
         self.categoria = categoria
+
+
+
+        #--------------------------------------------------------
+        # isolando a prioridade para facilitar ordenação
+        #--------------------------------------------------------
+        if prioridade not in Produto.prioridade_valor:
+            raise ValueError("Prioridade deve ser: alta, media ou baixa.")
         self.prioridade = prioridade
+        self.prioridade_indice = Produto.prioridade_valor[prioridade]
+
+        #--------------------------------------------------------
+        # isolando o status para facilitar marcação
+        #--------------------------------------------------------
+        if status not in Produto.status_valido:
+            raise ValueError("Status deve ser: pendente ou comprado.")
         self.status = status
+        #--------------------------------------------------------
+
+
+
         self.data_inclusao = data_inclusao
         
         self.prioridade_indice = Produto.prioridade_valor[prioridade]
         self.historico = Historico()
 
+    # --------------------------------------------------------
+    # Registrar ação no histórico
+    # --------------------------------------------------------
     def registrar(self, msg):
         self.historico.adicionar(msg)
 
@@ -36,8 +63,29 @@ class Produto:
         self.prioridade = nova_prioridade
         self.prioridade_indice = Produto.prioridade_valor[nova_prioridade]
 
-        
+    # --------------------------------------------------------
+    # Marcar como comprado
+    # --------------------------------------------------------
+    def marcar_comprado(self):
+        if self.status == "comprado":
+            return  # já está comprado
 
+        self.status = "comprado"
+        self.historico.adicionar(f"Item '{self.nome}' marcado como comprado.")
+
+    # --------------------------------------------------------
+    # Marcar como pendente
+    # --------------------------------------------------------
+    def marcar_pendente(self):
+        if self.status == "pendente":
+            return
+
+        self.status = "pendente"
+        self.historico.adicionar(f"Item '{self.nome}' marcado como pendente.")
+
+        
+ # --------------------------------------------------------  
+# funções de para o registro do histórico
 class Registro:
     def __init__(self, mensagem):
         self.mensagem = mensagem
@@ -52,9 +100,9 @@ class Historico:
         novo = Registro(msg)
         novo.proximo = self.cabeça
         self.cabeça = novo
+# --------------------------------------------------------
 
-
-
+# Lista ligada para produtos
 def inserir_ordenado(self, produto):
     novo = No(produto)
 
