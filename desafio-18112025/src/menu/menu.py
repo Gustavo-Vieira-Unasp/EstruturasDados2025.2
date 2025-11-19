@@ -1,8 +1,7 @@
+from src.listaEncadeada.listaEncadeada import ListaEncadeada
 from listaDeCompras.listaDeCompras import exibir_lista_de_compras
 
-placeholder = []
-
-def gerar_menu(placeholder):
+def gerar_menu(placeholder : ListaEncadeada):
     while True:
         print('''
             1 - Adicionar itens a lista
@@ -14,13 +13,23 @@ def gerar_menu(placeholder):
         acao_menu = input("Escolha a opção")
 
         if acao_menu == '1':
-            return adicionar_itens
+            return adicionarItens(placeholder)
         
         elif acao_menu == '2':
-            return remover_itens
+            return removerItens(placeholder)
         
         elif acao_menu == '3':
-            return mudar_prioridade
+            return mudarPrioridade(placeholder)
         
         elif acao_menu == '4':
             return exibir_lista_de_compras(placeholder)
+        
+def adicionarItens(placeholder : ListaEncadeada):
+    
+    pass
+
+def removerItens(placeholder : ListaEncadeada):
+    pass
+
+def mudarPrioridade(placeholder : ListaEncadeada):
+    pass
