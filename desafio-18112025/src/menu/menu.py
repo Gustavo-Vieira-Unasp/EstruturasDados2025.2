@@ -1,5 +1,6 @@
 from src.listaEncadeada.listaEncadeada import ListaEncadeada
-from listaDeCompras.listaDeCompras import exibir_lista_de_compras
+from src.models.produtos import Produto
+import datetime
 
 def gerar_menu(placeholder : ListaEncadeada):
     while True:
@@ -22,14 +23,20 @@ def gerar_menu(placeholder : ListaEncadeada):
             return mudarPrioridade(placeholder)
         
         elif acao_menu == '4':
-            return exibir_lista_de_compras(placeholder)
+            return placeholder.imprimir_lista()
         
 def adicionarItens(placeholder : ListaEncadeada):
-    
-    pass
+    produto = Produto(
+        nome = input(),
+        quantidade = int(input()),
+        prioridade = str(input()),
+        status = str(input()),
+        data_inclusao = datetime.datetime.now()
+    )
+    return placeholder.inserir(produto)
 
-def removerItens(placeholder : ListaEncadeada):
-    pass
+def removerItens(placeholder : ListaEncadeada, produto : Produto):
+    return placeholder.remover(produto)
 
-def mudarPrioridade(placeholder : ListaEncadeada):
-    pass
+def mudarPrioridade(placeholder : ListaEncadeada, produto : Produto):
+    return placeholder.buscar(produto.alterar_prioridade())
