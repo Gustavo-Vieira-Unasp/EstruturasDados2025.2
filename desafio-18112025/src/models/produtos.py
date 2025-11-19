@@ -8,7 +8,7 @@
 # Status (pendente, comprado)
 # Data de inclusão
 
-
+from src.No.no import No
 
 class Produto:
     # Mapeamento de prioridade para valores numéricos para facilitar a ordenação

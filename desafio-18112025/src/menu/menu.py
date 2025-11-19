@@ -31,6 +31,7 @@ def adicionarItens(placeholder : ListaEncadeada):
         quantidade = int(input()),
         prioridade = str(input()),
         status = str(input()),
+        categoria = str(input()),
         data_inclusao = datetime.datetime.now()
     )
     return placeholder.inserir(produto)
